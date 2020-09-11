@@ -7,20 +7,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # Create your views here.
 
-news = [
-    {
-        'title': 'Первая запись',
-        'text': 'Текст для первой записи',
-        'date' : '30 апреля',
-        'author' : 'Vitalii'
-    },
-    {
-        'title': 'Вторая запись',
-        'text': 'Текст для второй записи',
-        'date' : '30 апреля',
-        'author' : ''
-    }
-]
 
 def home(request):
     data = {
@@ -28,3 +14,10 @@ def home(request):
         'title': 'Главная страница блога'
     }
     return render(request,'blog/home.html',data)
+
+# class ShowNewsView(ListView):
+#     model = News
+    # template_name = 'blog/home.html'
+    # context_object_name = 'news'
+    # ordering = ['-date']
+    # paginate_by = 4
