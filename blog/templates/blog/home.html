@@ -4,7 +4,7 @@
 <div class="alert alert-light">
     <h1>{{post.title}}</h1>
     <p>{{ post.text}}</p>
-    <span class="text-muted">Data: {{post.date}} </span>
+    <span class="text-muted">{{post.date|date:"d E Y в H:i:s" }}</span>
 {% if post.author %}
     <p>Author: {{post.author}}</p>
 {% else %}

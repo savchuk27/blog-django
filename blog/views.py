@@ -1,9 +1,9 @@
 from django.shortcuts import render
+from .models import News
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.http import HttpResponse
 
 # Create your views here.
 
@@ -24,7 +24,7 @@ news = [
 
 def home(request):
     data = {
-        'news': news,
+        'news': News.objects.all(),
         'title': 'Главная страница блога'
     }
     return render(request,'blog/home.html',data)
