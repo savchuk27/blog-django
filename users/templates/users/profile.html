@@ -1,5 +1,5 @@
 {% extends 'blog/main.html' %}
-
+{% load crispy_forms_tags%}
 {%block main_section%}
 <div class="form-section">
     <h2>Кабинет пользователя</h2>
@@ -10,6 +10,12 @@
           <b>Email: </b> {{user.email}}
       </p>
     </div>
+    <h3 class="mt-4">Изменить данные пользователя</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{update_user|crispy}}
+        {{img_profile|crispy}}
+    <button type="submit" class="btn btn-outline-warning">Обновить данные</button>
     </form>
 </div>
     {%endblock main_section%}

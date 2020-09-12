@@ -4,13 +4,23 @@
 <div class="alert alert-light">
     <h1>{{post.title}}</h1>
     <p>{{ post.text}}</p>
+    <div class="row">
+        <div class="col-md-2">
+            {% if post.author.profile.img %}
+            <img src="{{post.author.profile.img.url}}" alt="{{post.author}}" class="user_image">
+            {% else %}
+            <img src="/pictures/default.jpg" alt="{{post.author}}" class="user_image">
+            {%endif%}
+        </div>
+    <div class="col-md-10">
     <span class="text-muted">{{post.date|date:"d E Y в H:i:s" }}</span>
-{% if post.author %}
+        {% if post.author %}
     <p>Author: {{post.author}}</p>
 {% else %}
     <p>Author: Admdin</p>
 {% endif %}
-</div>
+         </div>
+    </div>
+        </div>
 {% endfor %}
 {% endblock main_section %}
-
