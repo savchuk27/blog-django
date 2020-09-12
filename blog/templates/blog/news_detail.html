@@ -1,0 +1,31 @@
+{% extends 'blog/main.html' %}
+{%block main_section%}
+<div class="alert alert-light">
+    <a href="{%url 'blog-home'%}">Вернуться назад</a>
+    <h1>{{object.title}}</h1>
+    <p>{{ object.text|safe}}</p>
+    <div class="row">
+        <div>
+            {% if object.author.profile.img %}
+            <img src="{{object.author.profile.img.url}}" alt="{{object.author}}" class="user_image">
+            {% else %}
+            <img src="/pictures/default.jpg" alt="{{object.author}}" class="user_image">
+            {%endif%}
+        </div>
+        <div class="mt-1">
+            <span class="text-muted"><p><b>Дата: </b>{{object.date|date:"d E Y в H:i:s" }}</p></span>
+            <p>Автор: <a href="">{{object.author}}</a></p>
+        </div>
+    </div>
+    {% if object.author == user %}
+    <a href="{% url 'news-update' object.id %}" class="btn btn-info">Обновить пост</a>
+    <a href="{% url 'news-delete' object.id %}" class="btn btn-danger">Удалить пост</a>
+    {% endif%}
+</div>
+    {%endblock main_section%}
+
+
+
+{%block aside_news_section%}
+
+{%endblock aside_news_section%}
